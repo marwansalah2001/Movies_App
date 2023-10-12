@@ -47,11 +47,13 @@
 }
 
 .card__runtime {
+    color: #D22B2B;
     font-size: .75rem;
     margin-bottom: 0.25rem;
 }
 
 .card__rating {
+    color:#ffd700;
     float: right;
 }
 
