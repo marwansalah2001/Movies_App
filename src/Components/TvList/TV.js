@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./movieList.css";
+import "./Tv.css";
 import { useParams } from "react-router-dom";
 import Cards from "../card/card";
 
-const MovieList = () => {
+const TvList = () => {
   const [movieList, setMovieList] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const { type } = useParams();
@@ -17,12 +17,12 @@ const MovieList = () => {
   }, [type]);
 
   const getData = () => {
-    let url = `https://api.themoviedb.org/3/movie/${
+    let url = `https://api.themoviedb.org/3/tv/${
       type ? type : "popular"
     }?api_key=b74d172af2d07764ccdd7a516ebaec24`;
 
     if (searchQuery) {
-      url = `https://api.themoviedb.org/3/search/movie?api_key=b74d172af2d07764ccdd7a516ebaec24&query=${encodeURIComponent(
+      url = `https://api.themoviedb.org/3/search/tv?api_key=b74d172af2d07764ccdd7a516ebaec24&query=${encodeURIComponent(
         searchQuery
       )}`;
     }
@@ -43,13 +43,13 @@ const MovieList = () => {
 
   return (
     <div className="movie__list">
-      <h2 className="list__title">{(type ? type : "Popular")+" Movies"}</h2>
+      <h2 className="list__title">{(type ? type : "Popular")+" TV Shows"}</h2>
       <form className="search__form" onSubmit={handleSearchSubmit}>
         <input
           type="text"
           value={searchQuery}
           onChange={handleSearch}
-          placeholder="Search movies"
+          placeholder="Search TV Shows"
         />
         <button type="submit">Search</button>
       </form>
@@ -62,4 +62,4 @@ const MovieList = () => {
   );
 };
 
-export default MovieList;
+export default TvList;
